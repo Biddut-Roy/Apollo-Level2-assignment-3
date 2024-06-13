@@ -6,7 +6,7 @@ const UserSchema = new Schema(
   {
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
+    password: { type: String, required: true, select: 0 },
     phone: { type: String, required: true },
     role: { type: String, enum: ['admin', 'user'], required: true },
     address: { type: String, required: true },
@@ -23,10 +23,10 @@ UserSchema.pre('save', async function (next) {
 });
 
 // post save middleware // hooks
-UserSchema.post('save', function (doc, next) {
-  doc.password = '';
-  next();
-});
+// UserSchema.post('save', function (doc, next) {
+//   doc.password = '';
+//   next();
+// });
 
 const User = model<TCreateUser>('User', UserSchema);
 
