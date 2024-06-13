@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { TCreateUser } from './auth.interface';
+import { TCreateUser, UserModel } from './auth.interface';
 import bcrypt from 'bcrypt';
 
 const UserSchema = new Schema(
@@ -18,16 +18,20 @@ const UserSchema = new Schema(
 
 UserSchema.pre('save', async function (next) {
   const user = this;
+  if (!user.isModified('password')) {
+    return next();
+  }
   user.password = await bcrypt.hash(user.password, 12);
   next();
 });
 
-// post save middleware // hooks
-// UserSchema.post('save', function (doc, next) {
-//   doc.password = '';
-//   next();
-// });
+UserSchema.statics.isPasswordMatched = async function (
+  plainTextPassword,
+  hashedPassword,
+) {
+  return await bcrypt.compare(plainTextPassword, hashedPassword);
+};
 
-const User = model<TCreateUser>('User', UserSchema);
+const User = model<TCreateUser, UserModel>('User', UserSchema);
 
 export default User;

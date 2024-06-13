@@ -17,20 +17,18 @@ const SignupUser = catchAsync(async (req, res) => {
 
 const loginUser = catchAsync(async (req, res) => {
   const result = await AuthServices.loginUser(req.body);
-  // const { refreshToken, accessToken, needsPasswordChange } = result;
 
-  // res.cookie('refreshToken', refreshToken, {
-  //   secure: config.NODE_DEV === 'production',
-  //   httpOnly: true,
-  // });
+  res.cookie('token', result.token, {
+    secure: config.NODE_DEV === 'production',
+    httpOnly: true,
+  });
 
   sendResponse(res, {
-    statusCode: httpStatus.OK,
     success: true,
-    message: 'User is logged in succesfully!',
+    statusCode: httpStatus.OK,
+    message: 'User logged in successfully',
     data: {
-      // accessToken,
-      // needsPasswordChange,
+      result,
     },
   });
 });
