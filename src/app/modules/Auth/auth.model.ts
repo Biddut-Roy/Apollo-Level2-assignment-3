@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { TUser } from './user.interfaces';
+import { TCreateUser } from './auth.interface';
 import bcrypt from 'bcrypt';
 
 const UserSchema = new Schema(
@@ -28,6 +28,6 @@ UserSchema.post('save', function (doc, next) {
   next();
 });
 
-const User = model<TUser>('User', UserSchema);
+const User = model<TCreateUser>('User', UserSchema);
 
 export default User;
