@@ -2,19 +2,14 @@ import { Schema, model } from 'mongoose';
 import { TCreateUser, UserModel } from './auth.interface';
 import bcrypt from 'bcrypt';
 
-const UserSchema = new Schema(
-  {
-    name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
-    password: { type: String, required: true, select: 0 },
-    phone: { type: String, required: true },
-    role: { type: String, enum: ['admin', 'user'], required: true },
-    address: { type: String, required: true },
-  },
-  {
-    timestamps: true,
-  },
-);
+const UserSchema = new Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true, select: 0 },
+  phone: { type: String, required: true },
+  role: { type: String, enum: ['admin', 'user'], required: true },
+  address: { type: String, required: true },
+});
 
 UserSchema.pre('save', async function (next) {
   const user = this;

@@ -1,4 +1,5 @@
 import { Model } from 'mongoose';
+import { USER_ROLE } from './auth.constant';
 
 export type TLoginUser = {
   email: string;
@@ -23,3 +24,5 @@ export interface UserModel extends Model<TCreateUser> {
     hashedPassword: string,
   ): Promise<boolean>;
 }
+
+export type TUserRole = keyof typeof USER_ROLE;
