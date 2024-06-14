@@ -20,14 +20,7 @@ const updateFacilitySchemaZod = z.object({
   }),
 });
 
-const deleteFacilitySchemaZod = z.object({
-  body: z.object({
-    isDeleted: z.boolean(),
-  }),
-});
-
 export const facilityValidationZod = {
   createFacilitySchemaZod,
   updateFacilitySchemaZod,
-  deleteFacilitySchemaZod,
 };

@@ -25,7 +25,6 @@ router.put(
 router.delete(
   '/:id',
   auth(USER_ROLE.admin),
-  validationRequest(facilityValidationZod.deleteFacilitySchemaZod),
   FacilityControllers.deleteFacility,
 );
 

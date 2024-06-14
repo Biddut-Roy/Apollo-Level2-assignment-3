@@ -27,12 +27,14 @@ const loginUser = async (payload: TLoginUser) => {
 
   // Generate a token
   const token = jwt.sign(
-    { id: user._id, role: user.role },
+    { email: user.email, role: user.role },
     config.jwt_access_secret as string,
     {
       expiresIn: config.jwt_access_expires_in as string,
     },
   );
+
+  console.log(`Bearer ${token}`);
 
   return {
     user,
