@@ -3,6 +3,17 @@ import { catchAsync } from '../../utils/catchAsync';
 import { sendResponse } from '../../utils/sendResponse';
 import { FacilityServices } from './facility.service';
 
+const getAllFacility = catchAsync(async (req, res) => {
+  const result = await FacilityServices.GetAllFacilities();
+
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: 'Facility added successfully',
+    data: result,
+  });
+});
+
 const createFacility = catchAsync(async (req, res) => {
   const result = await FacilityServices.CreateFacility(req.body);
 
@@ -15,5 +26,6 @@ const createFacility = catchAsync(async (req, res) => {
 });
 
 export const FacilityControllers = {
+  getAllFacility,
   createFacility,
 };
