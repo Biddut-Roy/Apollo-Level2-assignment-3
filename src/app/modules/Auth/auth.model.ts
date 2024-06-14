@@ -25,6 +25,11 @@ UserSchema.pre('save', async function (next) {
   next();
 });
 
+// select('+password') use this method to  get password
+// userSchema.statics.isUserExistsByEmail = async function (email: string) {
+//   return await User.findOne({ email: email }).select('+password');
+// };
+
 UserSchema.statics.isPasswordMatched = async function (
   plainTextPassword,
   hashedPassword,

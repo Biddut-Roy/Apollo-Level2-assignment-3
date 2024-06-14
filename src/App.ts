@@ -1,7 +1,8 @@
-import express, { Application, Request, Response } from 'express';
+import express, { Application, NextFunction, Request, Response } from 'express';
 const app: Application = express();
 import cors from 'cors';
 import router from './app/router';
+import httpStatus from 'http-status';
 
 // parser
 app.use(express.json());
@@ -14,11 +15,12 @@ app.get('/', (req: Request, res: Response) => {
   res.send('server Is a Starting');
 });
 
-//route not found
-app.use((req: Request, res: Response) => {
-  res.status(404).json({
+// not route found
+app.use((req: Request, res: Response, next: NextFunction) => {
+  return res.status(httpStatus.NOT_FOUND).json({
     success: false,
-    message: 'Route not found',
+    message: 'API not found',
+    error: '',
   });
 });
 

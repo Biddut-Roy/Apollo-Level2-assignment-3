@@ -5,19 +5,16 @@ interface ResponseData<T> {
   success: boolean;
   message?: string;
   data: T;
+  token?: string;
 }
 
-export const sendResponse = <T>(
-  res: Response,
-  data: ResponseData<T>,
-  token?: string, // Make token optional in the function signature
-) => {
+export const sendResponse = <T>(res: Response, data: ResponseData<T>) => {
   const response: {
     success: boolean;
     statusCode: number;
     message?: string;
-    data: T;
     token?: string;
+    data: T;
   } = {
     success: data.success,
     statusCode: data.statusCode,
@@ -25,8 +22,8 @@ export const sendResponse = <T>(
     data: data.data,
   };
 
-  if (token) {
-    response.token = token;
+  if (data.token) {
+    response.token = data.token;
   }
 
   res.status(data.statusCode).json(response);

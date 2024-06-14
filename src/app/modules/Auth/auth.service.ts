@@ -13,7 +13,9 @@ const SignupUser = async (payload: TCreateUser) => {
 const loginUser = async (payload: TLoginUser) => {
   const { email, password } = payload;
 
-  const user = await User.findOne({ email });
+  // select('+password') use this method to  get password hidden model select :0
+  const user = await User.findOne({ email }).select('+password');
+
   if (!user) {
     throw new AppError(httpStatus.FORBIDDEN, 'Invalid email or password');
   }

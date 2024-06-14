@@ -16,7 +16,7 @@ export interface TCreateUser {
 
 export interface UserModel extends Model<TCreateUser> {
   //instance methods for checking if the user exist
-  isUserExistsByCustomId(id: string): Promise<TCreateUser>;
+  isUserExistsByEmail(email: string): Promise<TCreateUser>;
   //instance methods for checking if passwords are matched
   isPasswordMatched(
     plainTextPassword: string,
