@@ -17,7 +17,14 @@ const UpdateFacility = async (id: string, payload: TFacility) => {
   });
   return result;
 };
-const DeleteFacility = async (payload: TFacility) => {};
+const DeleteFacility = async (id: string) => {
+  const result = await Facility.findByIdAndUpdate(
+    id,
+    { isDeleted: true },
+    { new: true },
+  );
+  return result;
+};
 
 export const FacilityServices = {
   GetAllFacilities,

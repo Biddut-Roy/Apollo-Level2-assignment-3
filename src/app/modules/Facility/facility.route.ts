@@ -8,4 +8,6 @@ router.post('/', FacilityControllers.createFacility);
 
 router.put('/:id', FacilityControllers.updateFacility);
 
+router.delete('/:id', FacilityControllers.deleteFacility);
+
 export const FacilityRoutes = router;
