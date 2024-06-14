@@ -10,7 +10,13 @@ const CreateFacility = async (payload: TFacility) => {
   return result;
 };
 
-const UpdateFacility = async (payload: TFacility) => {};
+const UpdateFacility = async (id: string, payload: TFacility) => {
+  const result = await Facility.findByIdAndUpdate(id, payload, {
+    new: true,
+    runValidators: true,
+  });
+  return result;
+};
 const DeleteFacility = async (payload: TFacility) => {};
 
 export const FacilityServices = {

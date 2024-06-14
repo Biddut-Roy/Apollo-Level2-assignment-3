@@ -6,6 +6,6 @@ const router = express.Router();
 router.get('/', FacilityControllers.getAllFacility);
 router.post('/', FacilityControllers.createFacility);
 
-router.post('/:id');
+router.put('/:id', FacilityControllers.updateFacility);
 
 export const FacilityRoutes = router;
