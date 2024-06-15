@@ -20,11 +20,6 @@ const loginUser = catchAsync(async (req, res) => {
 
   const { user, token } = result;
 
-  res.cookie('token', token, {
-    secure: config.NODE_DEV === 'production',
-    httpOnly: true,
-  });
-
   sendResponse(res, {
     success: true,
     statusCode: httpStatus.OK,
