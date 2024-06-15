@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { BookingsControllers } from './check.controller';
+import { CheckingControllers } from './check.controller';
 
 const router = Router();
 
-router.use('', BookingsControllers.getAllBookings);
+router.get('', CheckingControllers.getAllChecking);
 
 export const CheckRoutes = router;

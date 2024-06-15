@@ -2,7 +2,7 @@ import { WORKING_HOURS } from './check.constant';
 import { TBooking } from './check.interface';
 import { Booking } from './check.model';
 
-const getAllBookings = async (date: string) => {
+const getAllChecking = async (date: string) => {
   const bookings: TBooking[] = await Booking.find({ date });
 
   // Function to determine available slots
@@ -31,4 +31,4 @@ const getAllBookings = async (date: string) => {
   return availableSlots;
 };
 
-export const BookingServices = { getAllBookings };
+export const CheckingServices = { getAllChecking };
