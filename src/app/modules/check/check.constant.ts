@@ -5,13 +5,3 @@ export const WORKING_HOURS = [
   { startTime: '14:00', endTime: '16:00' },
   { startTime: '16:00', endTime: '18:00' },
 ];
-
-// Helper function to get a string from query parameter
-export const getStringQueryParam = (
-  param: string | string[] | ParsedQs | ParsedQs[] | undefined,
-): string => {
-  if (typeof param === 'string') {
-    return param;
-  }
-  return '';
-};

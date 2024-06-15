@@ -3,7 +3,7 @@ import { catchAsync } from '../../utils/catchAsync';
 import { sendResponse } from '../../utils/sendResponse';
 import { BookingServices } from './check.service';
 import moment from 'moment';
-import { getStringQueryParam } from './check.constant';
+import { getStringQueryParam } from './check.utils';
 
 const getAllBookings = catchAsync(async (req, res) => {
   const dateQuery = getStringQueryParam(req.query.date);
