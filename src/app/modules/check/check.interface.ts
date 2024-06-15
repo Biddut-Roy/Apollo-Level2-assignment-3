@@ -1,7 +1,5 @@
-export interface TFacility {
-  name: string;
-  description: string;
-  pricePerHour: number;
-  location: string;
-  isDeleted: boolean;
+export interface TBooking {
+  date: string;
+  startTime: string;
+  endTime: string;
 }
