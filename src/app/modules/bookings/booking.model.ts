@@ -26,10 +26,11 @@ const bookingRequestSchema = new Schema({
   },
   payableAmount: {
     type: Number,
-    default: 'confirmed',
+    required: true,
   },
   isBooked: {
     type: String,
+    default: 'confirmed',
     required: true,
   },
 });

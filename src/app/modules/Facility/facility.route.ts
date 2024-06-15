@@ -7,7 +7,7 @@ import { USER_ROLE } from '../Auth/auth.constant';
 
 const router = express.Router();
 
-router.get('/', FacilityControllers.getAllFacility);
+router.get('/', auth(USER_ROLE.admin), FacilityControllers.getAllFacility);
 router.post(
   '/',
   auth(USER_ROLE.admin),

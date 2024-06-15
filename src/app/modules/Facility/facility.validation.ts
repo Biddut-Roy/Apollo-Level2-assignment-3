@@ -6,7 +6,6 @@ const createFacilitySchemaZod = z.object({
     description: z.string(),
     pricePerHour: z.number().positive(),
     location: z.string(),
-    isDeleted: z.boolean(),
   }),
 });
 
