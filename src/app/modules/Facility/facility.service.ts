@@ -2,7 +2,7 @@ import { TFacility } from './facility.interface';
 import { Facility } from './facility.model';
 
 const GetAllFacilities = async () => {
-  const result = await Facility.find();
+  const result = await Facility.find({ isDeleted: { $ne: true } });
   return result;
 };
 const CreateFacility = async (payload: TFacility) => {
