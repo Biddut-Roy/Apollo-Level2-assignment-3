@@ -1,3 +1,5 @@
+import httpStatus from 'http-status';
+import AppError from '../../errors/appError';
 import { TFacility } from './facility.interface';
 import { Facility } from './facility.model';
 
@@ -6,6 +8,14 @@ const GetAllFacilities = async () => {
   return result;
 };
 const CreateFacility = async (payload: TFacility) => {
+  const { name, description, pricePerHour, location } = payload;
+  const existingFacility = await Facility.findOne({ name });
+  if (existingFacility) {
+    throw new AppError(
+      httpStatus.FORBIDDEN,
+      'Facility with the same data already exists',
+    );
+  }
   const result = await Facility.create(payload);
   return result;
 };
