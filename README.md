@@ -80,7 +80,11 @@ The application requires a configuration file to connect to the MongoDB database
    ```
  ```JWT_ACCESS_EXPIRES_IN = 1d
    ```
- ```JWT_ACCESS_SECRET = Your_SECRETE_KEY
+
+ ```
+JWT_ACCESS_SECRET = Your_SECRETE_KEY
    ```
 
- ```NODE_DEV = production
+ ```
+NODE_DEV = production
+ ```
