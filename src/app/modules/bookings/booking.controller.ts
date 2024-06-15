@@ -9,13 +9,14 @@ const getAllBookings = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: httpStatus.OK,
-    message: 'Availability checked successfully',
+    message: 'Bookings retrieved successfully',
     data: result,
   });
 });
 
 const createBookings = catchAsync(async (req, res) => {
-  const result = await BookingServices.createBookings(req.body, req.user);
+  const email = req.user;
+  const result = await BookingServices.createBookings(req.body, email);
   sendResponse(res, {
     success: true,
     statusCode: httpStatus.OK,
