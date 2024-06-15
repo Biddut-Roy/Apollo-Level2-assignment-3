@@ -8,8 +8,9 @@ const GetAllFacilities = async () => {
   return result;
 };
 const CreateFacility = async (payload: TFacility) => {
-  const { name, description, pricePerHour, location } = payload;
+  const { name } = payload;
   const existingFacility = await Facility.findOne({ name });
+
   if (existingFacility) {
     throw new AppError(
       httpStatus.FORBIDDEN,

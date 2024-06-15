@@ -26,8 +26,9 @@ const getUserBookings = catchAsync(async (req, res) => {
 });
 
 const createBookings = catchAsync(async (req, res) => {
-  const email = req.user;
-  const result = await BookingServices.createBookings(req.body, email);
+  const email = req?.user?.email;
+
+  const result = await BookingServices.createBookings(req?.body, email);
   sendResponse(res, {
     success: true,
     statusCode: httpStatus.OK,
