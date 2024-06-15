@@ -34,4 +34,17 @@ const createBookings = async (
   return result;
 };
 
-export const BookingServices = { createBookings, getAllBookings };
+const deleteBookingByID = async (id: string) => {
+  const result = await BookingRequest.findByIdAndUpdate(
+    id,
+    { isBooked: 'canceled' },
+    { new: true },
+  );
+  return result;
+};
+
+export const BookingServices = {
+  createBookings,
+  getAllBookings,
+  deleteBookingByID,
+};

@@ -15,4 +15,6 @@ router.post(
   validationRequest(bookingValidationZod.createBookingSchemaZod),
   BookingsControllers.createBookings,
 );
+
+router.delete('/:id', auth(USER_ROLE.user), BookingsControllers.deleteBooking);
 export const BookingsRoutes = router;
