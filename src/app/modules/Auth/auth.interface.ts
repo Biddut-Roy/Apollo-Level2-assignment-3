@@ -4,6 +4,7 @@ import { USER_ROLE } from './auth.constant';
 export type TLoginUser = {
   email: string;
   password: string;
+  userID: string;
 };
 
 export interface TCreateUser {

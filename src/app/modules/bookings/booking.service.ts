@@ -10,6 +10,14 @@ const getAllBookings = async () => {
   return result;
 };
 
+const getUserBooking = async (id: string) => {
+  const result = await BookingRequest.findOne({
+    user: id,
+    isBooked: { $ne: 'canceled' },
+  }).populate('facility');
+  return result;
+};
+
 const createBookings = async (
   data: TCreateBookingServices,
   email: JwtPayload,
@@ -47,4 +55,5 @@ export const BookingServices = {
   createBookings,
   getAllBookings,
   deleteBookingByID,
+  getUserBooking,
 };

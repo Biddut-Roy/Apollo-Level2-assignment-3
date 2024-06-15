@@ -9,6 +9,8 @@ const router = Router();
 
 router.get('', auth(USER_ROLE.admin), BookingsControllers.getAllBookings);
 
+router.get('/user', auth(USER_ROLE.user), BookingsControllers.getUserBookings);
+
 router.post(
   '',
   auth(USER_ROLE.user),

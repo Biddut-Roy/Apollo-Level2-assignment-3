@@ -13,6 +13,17 @@ const getAllBookings = catchAsync(async (req, res) => {
     data: result,
   });
 });
+const getUserBookings = catchAsync(async (req, res) => {
+  const id = req.user.userID;
+  const result = await BookingServices.getUserBooking(id);
+
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: 'Bookings retrieved successfully',
+    data: result,
+  });
+});
 
 const createBookings = catchAsync(async (req, res) => {
   const email = req.user;
@@ -38,6 +49,7 @@ const deleteBooking = catchAsync(async (req, res) => {
 
 export const BookingsControllers = {
   getAllBookings,
+  getUserBookings,
   createBookings,
   deleteBooking,
 };
