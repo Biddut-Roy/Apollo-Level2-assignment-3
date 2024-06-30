@@ -27,7 +27,7 @@ const createBookings = async (
 ) => {
   const { startTime, endTime, facility, date } = data;
 
-  const existingFacility = await BookingRequest.findOne({ facility });
+  const existingFacility = await BookingRequest.findOne({ facility , email });
 
   if (existingFacility) {
     throw new AppError(

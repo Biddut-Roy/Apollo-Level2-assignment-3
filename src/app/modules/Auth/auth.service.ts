@@ -34,11 +34,11 @@ const loginUser = async (payload: TLoginUser) => {
     },
   );
 
-  console.log(`Bearer ${token}`);
+  console.log(token);
 
   return {
     user,
-    token: `Bearer ${token}`,
+    token: token,
   };
 };
 
