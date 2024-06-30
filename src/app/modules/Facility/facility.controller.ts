@@ -38,6 +38,7 @@ const updateFacility = catchAsync(async (req, res) => {
 });
 const deleteFacility = catchAsync(async (req, res) => {
   const id = req.params.id;
+
   const result = await FacilityServices.DeleteFacility(id);
 
   sendResponse(res, {

@@ -28,6 +28,7 @@ const UpdateFacility = async (id: string, payload: TFacility) => {
   });
   return result;
 };
+
 const DeleteFacility = async (id: string) => {
   const result = await Facility.findByIdAndUpdate(
     id,
