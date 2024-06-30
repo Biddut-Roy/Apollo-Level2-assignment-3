@@ -11,6 +11,7 @@ import handleDuplicateError from '../errors/handelDuplicateError';
 import handleCastError from '../errors/handelCastError';
 import AppError from '../errors/appError';
 import { TErrorSources } from '../interfaces/error';
+import e11000Error from '../errors/e11000Error';
 
 const globalErrorHandler = (
   err: any,
@@ -45,6 +46,14 @@ const globalErrorHandler = (
     errorSources = simplifiedError?.errorSources;
   } else if (err?.code === 11000) {
     const simplifiedError = handleDuplicateError(err);
+    statusCode = simplifiedError?.statusCode;
+    message = simplifiedError?.message;
+    errorSources = simplifiedError?.errorSources;
+  } else if (
+    err.message &&
+    err.message.includes('E11000 duplicate key error')
+  ) {
+    const simplifiedError = e11000Error(err);
     statusCode = simplifiedError?.statusCode;
     message = simplifiedError?.message;
     errorSources = simplifiedError?.errorSources;

@@ -17,6 +17,14 @@ const getUserBookings = catchAsync(async (req, res) => {
   const id = req.user.userID;
   const result = await BookingServices.getUserBooking(id);
 
+  if (!result) {
+    return sendResponse(res, {
+      success: true,
+      statusCode: httpStatus.OK,
+      message: 'No Data Found',
+      data: result,
+    });
+  }
   sendResponse(res, {
     success: true,
     statusCode: httpStatus.OK,

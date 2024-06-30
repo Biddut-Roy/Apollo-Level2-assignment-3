@@ -20,6 +20,7 @@ const getUserBooking = async (id: string) => {
     user: id,
     isBooked: { $ne: 'canceled' },
   }).populate('facility');
+
   return result;
 };
 
