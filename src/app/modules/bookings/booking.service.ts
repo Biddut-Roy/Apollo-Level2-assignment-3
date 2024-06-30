@@ -9,7 +9,9 @@ import mongoose from 'mongoose';
 import User from '../Auth/auth.model';
 
 const getAllBookings = async () => {
-  const result = await BookingRequest.find();
+  const result = await BookingRequest.find({
+    isBooked: { $ne: 'canceled' },
+  });
   return result;
 };
 
@@ -27,7 +29,7 @@ const createBookings = async (
 ) => {
   const { startTime, endTime, facility, date } = data;
 
-  const existingFacility = await BookingRequest.findOne({ facility , email });
+  const existingFacility = await BookingRequest.findOne({ facility, email });
 
   if (existingFacility) {
     throw new AppError(
