@@ -34,8 +34,6 @@ const loginUser = async (payload: TLoginUser) => {
     },
   );
 
-  console.log(token);
-
   return {
     user,
     token: token,
