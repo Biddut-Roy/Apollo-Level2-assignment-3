@@ -6,7 +6,6 @@ import httpStatus from 'http-status';
 
 const SignupUser = catchAsync(async (req, res) => {
   const result = await AuthServices.SignupUser(req.body);
-
   sendResponse(res, {
     success: true,
     statusCode: httpStatus.OK,

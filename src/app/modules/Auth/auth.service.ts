@@ -6,6 +6,8 @@ import AppError from '../../errors/appError';
 import jwt, { JwtPayload } from 'jsonwebtoken';
 
 const SignupUser = async (payload: TCreateUser) => {
+  console.log(payload);
+
   const result = await User.create(payload);
   return result;
 };
